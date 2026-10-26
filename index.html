@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jurnal PKL - RPL - SMK Negeri 2 Cipatujah</title>
+<style>
+:root{--bg:#e9edf3;--paper:#fff;--ink:#17233d;--mut:#5b6780;--line:#c9d1df;--acc:#1c4fa3;--acc2:#e8eef9;--bad:#b3261e}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(120deg,#12306b,#1c4fa3 60%,#2f78d8);color:#fff;padding:calc(10px + env(safe-area-inset-top)) 18px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;border-radius:0 0 22px 22px;box-shadow:0 6px 18px rgba(18,48,107,.28)}
+header small{display:block;font-size:12px;opacity:.8}
+header b{font-size:21px;letter-spacing:.2px}
+#st{font-size:12px;background:rgba(255,255,255,.2);padding:4px 11px;border-radius:12px;white-space:nowrap}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;background:#fff;border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -6px 20px rgba(23,35,61,.09)}
+nav button{flex:1;border:0;background:none;color:var(--mut);font:600 11px system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;-webkit-tap-highlight-color:transparent}
+nav button i{display:flex;width:54px;height:30px;border-radius:15px;align-items:center;justify-content:center;transition:background .2s}
+nav button svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav button.on{color:var(--acc)}
+nav button.on i{background:var(--acc2)}
+#sheet{position:fixed;inset:0;z-index:5;background:rgba(10,20,40,.45);display:none;align-items:flex-end}
+#sheet.on{display:flex}
+#sheet .sc{width:100%;background:#fff;border-radius:24px 24px 0 0;padding:10px 16px calc(86px + env(safe-area-inset-bottom));animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.grab{width:42px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 12px}
+#sl button{display:block;width:100%;border:0;background:#f1f5fb;margin:0 0 8px;padding:15px;border-radius:14px;font:600 16px system-ui,sans-serif;color:var(--ink);text-align:left}
+#sl button:active{background:var(--acc2)}
+main{max-width:760px;margin:0 auto;padding:16px 12px 104px}
+.sec{display:none;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px 16px;font-family:Georgia,"Times New Roman",serif}
+.sec.on{display:block}
+h1,h2,h3{margin:0 0 12px;text-align:center;line-height:1.25}
+h1{font-size:22px}h2{font-size:19px}h3{font-size:16px;text-align:left;margin-top:16px}
+label{display:block;margin:0 0 10px;font-size:14px;color:var(--mut)}
+input,textarea,select{display:block;width:100%;margin-top:3px;padding:9px 10px;border:1px solid var(--line);border-radius:5px;background:#fcfdff;color:var(--ink);font:16px/1.4 Georgia,serif}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--acc);border-color:var(--acc)}
+textarea{min-height:90px;resize:vertical}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 8px}
+.card{border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:5px;padding:12px;margin:0 0 12px;background:#fbfcff}
+.card .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.badge{background:var(--acc2);color:var(--acc);border-radius:12px;padding:2px 10px;font-size:13px;font-weight:600;font-family:system-ui,sans-serif}
+button.b{border:0;background:var(--acc);color:#fff;border-radius:6px;padding:10px 16px;font:600 15px system-ui,sans-serif;margin:4px 6px 4px 0}
+button.b.s{background:#fff;color:var(--acc);border:1px solid var(--acc)}
+button.b.d{background:#fff;color:var(--bad);border:1px solid var(--bad);padding:5px 10px;font-size:13px;margin:0}
+.logo{width:120px;height:120px;margin:0 auto 12px;border:2px dashed var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;font:12px system-ui,sans-serif;color:var(--mut);cursor:pointer;overflow:hidden;padding:4px}
+.logo img,.pf img{max-width:100%;max-height:100%;object-fit:contain}
+.pf{width:90px;height:120px;border:2px dashed var(--line);display:flex;align-items:center;justify-content:center;text-align:center;font:12px system-ui,sans-serif;color:var(--mut);cursor:pointer;overflow:hidden;margin:0 auto 10px}
+.pf img{width:100%;height:100%;object-fit:cover}
+.foot{text-align:center;margin-top:20px;font-size:14px}
+.foot b{font-size:17px;display:block}
+.ph{max-width:100%;max-height:200px;margin:6px 0;display:block;border-radius:4px}
+.note{font-size:14px;color:var(--mut);margin:0 0 12px}
+ol,ul{padding-left:20px;margin:6px 0 12px;font-size:15px}
+.tb{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-family:system-ui,sans-serif}
+td,th{border:1px solid var(--line);padding:6px 8px;text-align:left}
+.big{font-size:24px;font-weight:700;text-align:center;color:var(--acc);margin:6px 0}
+.hide{display:none}
+#toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 16px;border-radius:20px;font:14px system-ui,sans-serif;opacity:0;pointer-events:none;transition:opacity .2s;z-index:9;max-width:90%}
+#toast.on{opacity:1}
+body{background:linear-gradient(#d9e3f5,#eef1f7 260px) fixed}
+.sec{border:0;border-radius:20px;box-shadow:0 8px 28px rgba(23,35,61,.09)}
+.sec.on{animation:fi .25s ease-out}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}}
+h2{padding-bottom:10px;border-bottom:3px solid var(--acc2)}
+.card{border:0;border-left:5px solid var(--acc);border-radius:14px;box-shadow:0 2px 10px rgba(23,35,61,.07)}
+input,textarea,select{border-radius:10px;border-color:#d5dcea;background:#f8faff}
+button.b{border-radius:12px;box-shadow:0 2px 8px rgba(28,79,163,.25)}
+button.b.s,button.b.d{box-shadow:none}
+#toast{bottom:96px}
+@media(max-width:420px){.g2,.g3{grid-template-columns:1fr}}
+.ttd,.tv{display:none}
+@page{size:A4 portrait;margin:14mm 16mm}
+@media print{
+html,body{background:#fff!important;font-size:11pt}
+header,nav,#sheet,#toast,.noprint,button,.np,.note:not([style]),.hide,#s8{display:none!important}
+main{max-width:none!important;padding:0!important;margin:0!important}
+.sec{display:block!important;box-shadow:none!important;border:0!important;border-radius:0!important;animation:none!important;padding:0!important;font-family:"Times New Roman",Times,serif;color:#000;break-after:page;page-break-after:always}
+#s7{break-after:auto;page-break-after:auto}
+.sec h1{font-size:16pt}
+.sec h2{font-size:14pt;border-bottom:1.5px solid #000!important;padding-bottom:3mm;margin-bottom:6mm}
+.sec h3{font-size:12pt}
+.sec p,.sec li{font-size:11pt;text-align:justify;color:#000}
+label{display:grid;grid-template-columns:46mm 1fr;align-items:end;gap:2mm;margin:0 0 2.4mm;color:#000;font-size:11pt}
+.g2,.g3{display:grid;gap:0 6mm}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr 1fr}
+.g2 label,.g3 label{grid-template-columns:1fr;gap:0}
+input,select{border:0!important;border-bottom:1px dotted #000!important;background:none!important;border-radius:0!important;padding:0 1mm!important;margin:0!important;font:11pt "Times New Roman",serif!important;color:#000!important;-webkit-appearance:none;appearance:none;height:6.5mm}
+textarea{display:none!important}
+.tv{display:block;white-space:pre-wrap;border:1px solid #000;min-height:14mm;padding:1.5mm 2mm;font-size:11pt;line-height:1.35;margin:0;color:#000}
+.card{box-shadow:none!important;border:1px solid #000!important;border-radius:0!important;background:none!important;break-inside:avoid;margin:0 0 4mm;padding:3mm}
+.card .top{font-size:11pt;margin-bottom:2mm}
+.badge{background:none;color:#000;border:1px solid #000;padding:0 3mm}
+.logo{border:0;width:34mm;height:34mm;margin:6mm auto;font-size:0}
+.pf{border:1px solid #000;width:30mm;height:40mm;margin:0 0 5mm;font-size:0}
+.ph{max-height:60mm}
+.foot{margin-top:14mm;font-size:11pt;color:#000}
+.big{font-size:16pt;color:#000}
+table{font-size:10.5pt}
+td,th{border:1px solid #000;padding:1.5mm 3mm}
+.tb{overflow:visible}
+.ttd{display:grid!important;grid-template-columns:1fr 1fr;gap:10mm;margin-top:12mm;text-align:center;break-inside:avoid;font-size:11pt}
+.ttd u{display:block;width:55mm;margin:18mm auto 0;text-decoration:none;border-bottom:1px solid #000;min-height:5mm}
+}
+</style>
+</head>
+<body>
+<header><div><small>Jurnal PKL RPL &middot; SMKN 2 Cipatujah</small><b id="pt">Sampul</b></div><span id="st">Tersimpan</span></header>
+<div id="sheet" class="noprint"><div class="sc"><div class="grab"></div><h3 style="margin:0 0 10px">Menu lainnya</h3><div id="sl"></div></div></div>
+<nav id="nav"></nav>
+<main id="main"></main>
+<div id="toast"></div>
+<input type="file" id="fi" accept="image/*" class="hide">
+<datalist id="kt"><option value="Hadir"><option value="Izin"><option value="Sakit"><option value="Libur"><option value="Izin pulang lebih awal"></datalist>
+<script>
+(function(){
+"use strict";
+var KEY="jurnal_pkl_rpl_smkn2cipatujah_v1";
+var HARI=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+var S={f:{},hadir:[],jurnal:[],cat:[],logo:"",foto:""};
+var imgTarget=null,ready=false,EXTRA=["s1","s2","s3","s7","s8"];
+var IC={s0:'<path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/>',s4:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M8 13l3 3 5-5"/>',s5:'<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 9h6M9 13h6"/>',s6:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 11h6M9 15h4"/>',more:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>'};
+function closeSheet(){$("#sheet").classList.remove("on");}
+function fitPrint(){
+ var p=document.querySelectorAll("[data-p]"),i;
+ for(i=0;i<p.length;i++)p[i].textContent=S.f[p[i].dataset.p]||"";
+ var t=document.querySelectorAll("textarea");
+ for(i=0;i<t.length;i++){
+  var n=t[i].nextElementSibling;
+  if(!n||!n.classList.contains("tv")){n=document.createElement("div");n.className="tv";t[i].parentNode.insertBefore(n,t[i].nextSibling);}
+  n.textContent=t[i].value;
+ }
+}
+window.addEventListener("beforeprint",fitPrint);
+
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function $(s){return document.querySelector(s);}
+function toast(m){var t=$("#toast");t.textContent=m;t.className="on";clearTimeout(toast.t);toast.t=setTimeout(function(){t.className="";},2200);}
+function idb(op,val,cb){
+ try{
+  var rq=indexedDB.open("jurnal_pkl_db",1);
+  rq.onupgradeneeded=function(){rq.result.createObjectStore("kv");};
+  rq.onerror=function(){if(cb)cb(null);};
+  rq.onsuccess=function(){
+   try{
+    var db=rq.result,tx=db.transaction("kv",op==="put"?"readwrite":"readonly"),st=tx.objectStore("kv");
+    if(op==="put"){st.put(val,KEY);tx.oncomplete=function(){db.close();};}
+    else{var g=st.get(KEY);g.onsuccess=function(){db.close();if(cb)cb(g.result||null);};g.onerror=function(){if(cb)cb(null);};}
+   }catch(e){if(cb)cb(null);}
+  };
+ }catch(e){if(cb)cb(null);}
+}
+function save(){
+ if(!ready)return true;
+ var s=JSON.stringify(S),ok=false;
+ try{localStorage.setItem(KEY,s);ok=true;}catch(e){}
+ idb("put",s);
+ $("#st").textContent=ok?"Tersimpan":"Tersimpan (cadangan)";
+ return true;
+}
+function load(){
+ try{var r=localStorage.getItem(KEY);if(r){var o=JSON.parse(r);if(o&&typeof o==="object"){for(var k in S){if(o[k]!==undefined)S[k]=o[k];}}}}catch(e){}
+ if(!S.f||typeof S.f!=="object")S.f={};
+ if(!Array.isArray(S.hadir)||!S.hadir.length)S.hadir=[newHadir()];
+ if(!Array.isArray(S.jurnal)||!S.jurnal.length)S.jurnal=[newJurnal()];
+ if(!Array.isArray(S.cat)||!S.cat.length)S.cat=[newCat()];
+}
+function iso(d){var m=d.getMonth()+1,a=d.getDate();return d.getFullYear()+"-"+(m<10?"0"+m:m)+"-"+(a<10?"0"+a:a);}
+function nextDate(arr){
+ var l=arr.length?arr[arr.length-1].tgl:"";
+ if(!l)return "";
+ var d=new Date(l+"T00:00:00");if(isNaN(d))return "";
+ d.setDate(d.getDate()+1);return iso(d);
+}
+function hari(v){if(!v)return "-";var d=new Date(v+"T00:00:00");return isNaN(d)?"-":HARI[d.getDay()];}
+function newHadir(){return {tgl:nextDate(S.hadir||[]),datang:"",pd:"",pulang:"",pp:"",ket:""};}
+function newJurnal(){return {tgl:nextDate(S.jurnal||[]),akt:"",div:"",mulai:"08:00",selesai:"16:00",cp:"",paraf:""};}
+function newCat(){return {per:"",kerja:"",rencana:"",hasil:"",foto:"",ins:""};}
+
+/* ---------- builders ---------- */
+function F(l,k,t,ph){return '<label>'+l+'<input data-k="'+k+'" type="'+(t||"text")+'"'+(ph?' placeholder="'+ph+'"':"")+'></label>';}
+function T(l,k,r){return '<label>'+l+'<textarea data-k="'+k+'"'+(r?' rows="'+r+'"':"")+'></textarea></label>';}
+
+var TABS=[["s0","Sampul"],["s1","Identitas"],["s2","Petunjuk"],["s3","Tempat PKL"],["s4","Daftar Hadir"],["s5","Jurnal Harian"],["s6","Hasil PKL"],["s7","Penilaian"],["s8","Cetak & Data"]];
+
+function build(){
+ var h="";
+ h+='<section class="sec" id="s0"><h1>JURNAL PRAKTIK KERJA LAPANGAN<br>(PKL)</h1>'
+ +'<div class="logo" id="logoBox" data-img="logo">'+(S.logo?'<img src="'+S.logo+'" alt="Logo">':'Ketuk untuk memasang logo sekolah')+'</div>'
+ +F("Nama Siswa","nama")+F("NIS","nis")+F("Kelas","kelas","text","contoh: XII RPL 1")
+ +F("Bidang Keahlian","bidang")+F("Kompetensi Keahlian","kompetensi")
+ +'<div class="foot">PEMERINTAH PROVINSI JAWA BARAT<b>SMK NEGERI 2 CIPATUJAH</b>Jl. Pamayangsari Desa Cikawungading Kec. Cipatujah<br>Kab. Tasikmalaya 46189<br>Website: https://smkn2cipatujah.sch.id</div></section>';
+
+ h+='<section class="sec" id="s1"><h2>IDENTITAS SISWA</h2>'
+ +'<div class="pf" id="fotoBox" data-img="foto">'+(S.foto?'<img src="'+S.foto+'" alt="Foto">':'Ketuk untuk pasang pas foto 3x4')+'</div>'
+ +F("Nama Siswa","nama")+F("NIS","nis")+F("Kelas","kelas")
+ +'<label>Jenis Kelamin<select data-k="jk"><option value="">- pilih -</option><option>Laki-laki</option><option>Perempuan</option></select></label>'
+ +F("Tempat/Tanggal Lahir","ttl","text","contoh: Tasikmalaya, 30 Januari 2008")
+ +'<label>Golongan Darah<select data-k="gd"><option value="">- pilih -</option><option>A</option><option>B</option><option>O</option><option>AB</option></select></label>'
+ +T("Alamat","alamat",3)+F("Nama Orang Tua/Wali","ortu")+F("Pekerjaan Orang Tua/Wali","kerjaortu")+T("Alamat Orang Tua/Wali","alamatortu",3)
+ +'<div class="g2 np">'+F("Kota, tanggal pengesahan","kotaId","text","Cipatujah, 1 Juli 2026")+F("Nama Kepala Sekolah","kepsek")+'</div>'
+ +'<div class="ttd"><div></div><div><span data-p="kotaId"></span><br>Kepala Sekolah,<u data-p="kepsek"></u></div></div></section>';
+
+ h+='<section class="sec" id="s2"><h2>PETUNJUK PENGGUNAAN</h2>'
+ +'<h3>Latar Belakang</h3><p>Jurnal PKL disusun untuk mendukung pelaksanaan PKL dalam rangka link and match antara SMK dan Dunia Usaha/Dunia Industri (DUDI) agar lulusan SMK menjadi sumber daya manusia yang handal dan profesional.</p>'
+ +'<h3>Siswa</h3><ol><li>Baca jurnal ini dengan seksama.</li><li>Isi data/informasi pada setiap bagian.</li><li>Praktik di DUDI untuk mencapai keterampilan yang tertulis di jurnal.</li><li>Pastikan pembimbing di tempat PKL membaca, mengisi, dan memberi paraf.</li></ol>'
+ +'<h3>Guru Pembimbing Sekolah</h3><ol><li>Membimbing siswa sesuai langkah dalam jurnal.</li><li>Menjalin hubungan baik dengan DUDI.</li><li>Memantau kemajuan siswa dan mendiskusikannya dengan pembimbing DUDI.</li></ol>'
+ +'<h3>Pembimbing DUDI</h3><ol><li>Bekerja sama dengan sekolah menentukan kegiatan/keterampilan yang dapat dipraktikkan siswa.</li><li>Menyediakan fasilitas, bimbingan, dan pelatihan.</li><li>Memberikan penilaian sesuai format jurnal.</li></ol>'
+ +'<h3>Tata Tertib Siswa</h3><ol><li>Bersikap dan bekerja dengan jujur.</li><li>Memperhatikan aturan keselamatan kerja.</li><li>Mematuhi semua tata tertib tempat PKL.</li><li>Sopan dan santun.</li><li>Mampu bekerja sama dengan karyawan.</li></ol>'
+ +'<p><b>Sanksi:</b> pelanggaran tata tertib dikenai sanksi sesuai aturan perusahaan dan ditindaklanjuti di sekolah sesuai peraturan yang berlaku.</p>'
+ +'<h3>Catatan</h3><ol><li>Identitas siswa diisi lengkap dan diberi pas foto.</li><li>Data tempat PKL diisi lengkap dan disahkan pembimbing sekolah dan pimpinan DUDI.</li><li>Daftar hadir diisi setiap hari dan diparaf pembimbing DUDI. Hari Minggu dan libur nasional tetap ditulis.</li><li>Siswa yang tidak berangkat (sakit, keperluan keluarga, dll) wajib memberi kabar ke pembimbing DUDI dan wali kelas.</li><li>Jurnal kegiatan diisi setiap hari.</li><li>Hasil pelaksanaan PKL diisi dua minggu sekali.</li><li>Daftar nilai diisi DUDI dan ditandatangani pembimbing sekolah dan pembimbing DUDI.</li></ol></section>';
+
+ h+='<section class="sec" id="s3"><h2>DATA TEMPAT PKL</h2>'
+ +F("Nama Industri/Perusahaan","dudi")+F("Bidang Usaha","usaha")+F("Kompetensi","kompdudi","text","contoh: Pengembangan Perangkat Lunak")+T("Alamat","alamatdudi",3)
+ +'<div class="g2">'+F("No. Telp","telp","tel")+F("No. Fax","fax")+'</div>'
+ +F("Nama Pimpinan","pimpinan")+F("Nama Pembimbing DUDI","pembdudi")+F("Nama Guru Pembimbing Sekolah","guru")
+ +'<div class="g2">'+F("Tanggal Mulai PKL","mulai","date")+F("Tanggal Selesai PKL","selesai","date")+'</div>'
+ +'<div class="np">'+F("Kota, tanggal pengesahan","kotaDudi","text","Tasikmalaya, 1 Juli 2026")+'</div>'
+ +'<p class="note">Pengesahan: tanda tangan Pembimbing Sekolah dan Pimpinan DUDI dibubuhkan pada hasil cetak.</p>'
+ +'<div class="ttd"><div>Mengetahui,<br>Pembimbing Sekolah,<u data-p="guru"></u></div><div><span data-p="kotaDudi"></span><br>Pimpinan DUDI,<u data-p="pimpinan"></u></div></div></section>';
+
+ h+='<section class="sec" id="s4"><h2>DAFTAR HADIR PKL</h2><p class="note" style="text-align:center">SMK NEGERI 2 CIPATUJAH</p>'
+ +F("Tahun Pelajaran","tp","text","2026/2027")+'<div id="L_hadir"></div>'
+ +'<button class="b noprint" data-add="hadir">+ Tambah hari</button></section>';
+
+ h+='<section class="sec" id="s5"><h2>JURNAL KEGIATAN PKL</h2><div id="L_jurnal"></div>'
+ +'<button class="b noprint" data-add="jurnal">+ Tambah kegiatan</button></section>';
+
+ h+='<section class="sec" id="s6"><h2>HASIL PELAKSANAAN PKL</h2><p class="note" style="text-align:center">Catatan Kegiatan PKL (diisi dua minggu sekali)</p>'
+ +F("Nama Peserta Didik","nama")+F("Dunia Kerja Tempat PKL","dudi")+F("Nama Instruktur","pembdudi")+F("Nama Guru Pembimbing","guru")
+ +'<div id="L_cat"></div><button class="b noprint" data-add="cat">+ Tambah catatan</button></section>';
+
+ h+='<section class="sec" id="s7"><h2>DAFTAR NILAI PESERTA DIDIK MATA PELAJARAN PKL</h2><p class="note" style="text-align:center">Diisi oleh Pembimbing DUDI</p>'
+ +F("Nama Peserta Didik","nama")+F("NISN","nisn")+F("Kelas","kelas")+F("Program Keahlian","prog")+F("Konsentrasi Keahlian","konsen")
+ +F("Tempat PKL","dudi")+'<div class="g2">'+F("Mulai","mulai","date")+F("Selesai","selesai","date")+'</div>'
+ +F("Nama Instruktur","pembdudi")+F("Nama Guru Pembimbing","guru");
+ var TP=["Menerapkan soft skills yang dibutuhkan dalam dunia kerja (tempat PKL)","Menerapkan norma, POS dan K3LH yang ada pada dunia kerja (tempat PKL)","Menerapkan kompetensi teknis yang sudah dipelajari di sekolah dan/atau baru dipelajari pada dunia kerja (tempat PKL)","Memahami alur bisnis dunia kerja tempat PKL"];
+ for(var i=0;i<4;i++){h+='<div class="card"><div class="top">Tujuan '+(i+1)+'</div><p style="margin:0 0 8px;font-size:15px">'+TP[i]+'</p><label>Skor (0-100)<input data-k="sk'+i+'" type="number" inputmode="numeric" min="0" max="100"></label>'+T("Deskripsi","dk"+i,2)+'</div>';}
+ h+='<div class="card"><div class="top">Nilai akhir (rata-rata skor)</div><div class="big" id="nilai">-</div></div>'
+ +T("Catatan","ncat",3)+'<h3>Kehadiran</h3><div class="g3">'+F("Sakit (hari)","sakit","number")+F("Ijin (hari)","ijin","number")+F("Tanpa Ket. (hari)","alpa","number")+'</div>'
+ +'<div class="tb"><table><tr><th>Nilai</th><th>Predikat</th></tr><tr><td>&lt; 70</td><td>D</td></tr><tr><td>70 - 79</td><td>C</td></tr><tr><td>80 - 90</td><td>B</td></tr><tr><td>91 - 100</td><td>A</td></tr></table></div>'
+ +'<p class="note">Tanda tangan Guru Pembimbing dan Pembimbing Dunia Kerja dibubuhkan pada hasil cetak.</p>'
+ +'<div class="ttd"><div>Guru Pembimbing,<u data-p="guru"></u></div><div>Pembimbing Dunia Kerja,<u data-p="pembdudi"></u></div></div></section>';
+
+ h+='<section class="sec" id="s8"><h2>CETAK &amp; DATA</h2>'
+ +'<p class="note">Semua isian tersimpan otomatis di browser HP ini. Gunakan cadangan sebelum menghapus data browser atau ganti HP.</p>'
+ +'<button class="b" id="bPrint">Cetak / Simpan PDF</button><button class="b s" id="bExp">Unduh cadangan (.json)</button><button class="b s" id="bImp">Pulihkan cadangan</button><button class="b s" id="bLogo">Ganti logo sekolah</button><button class="b d" id="bReset">Hapus semua isian</button>'
+ +'<input type="file" id="fj" accept=".json,application/json" class="hide"></section>';
+ $("#main").innerHTML=h;
+}
+
+function listHTML(n){
+ var a=S[n],h="";
+ for(var i=0;i<a.length;i++){
+  var r=a[i];
+  function I(f,l,t){return '<label>'+l+'<input data-l="'+n+'" data-i="'+i+'" data-f="'+f+'" type="'+(t||"text")+'" value="'+esc(r[f])+'"></label>';}
+  function A(f,l,rw){return '<label>'+l+'<textarea data-l="'+n+'" data-i="'+i+'" data-f="'+f+'" rows="'+rw+'">'+esc(r[f])+'</textarea></label>';}
+  var del='<button class="b d noprint" data-del="'+n+'" data-i="'+i+'">Hapus</button>';
+  if(n==="hadir"){
+   h+='<div class="card"><div class="top"><span>No. '+(i+1)+' <span class="badge" id="hr'+i+'">'+hari(r.tgl)+'</span></span>'+del+'</div>'
+   +I("tgl","Tanggal","date")+'<div class="g2">'+I("datang","Jam datang","time")+I("pd","Paraf pembimbing (datang)")+I("pulang","Jam pulang","time")+I("pp","Paraf pembimbing (pulang)")+'</div>'
+   +'<label>Keterangan<input list="kt" data-l="hadir" data-i="'+i+'" data-f="ket" value="'+esc(r.ket)+'"></label></div>';
+  }else if(n==="jurnal"){
+   h+='<div class="card"><div class="top"><span>No. '+(i+1)+' <span class="badge" id="hj'+i+'">'+hari(r.tgl)+'</span></span>'+del+'</div>'
+   +I("tgl","Hari/Tanggal","date")+A("akt","Aktivitas PKL",3)+I("div","Divisi/Dept")
+   +'<div class="g2">'+I("mulai","Mulai pukul","time")+I("selesai","Selesai pukul","time")+'</div>'
+   +A("cp","Catatan Pembimbing (diisi pembimbing DUDI)",2)+I("paraf","Paraf Pembimbing")+'</div>';
+  }else{
+   h+='<div class="card"><div class="top"><span>Catatan '+(i+1)+'</span>'+del+'</div>'
+   +I("per","Periode (dua minggu)")+A("kerja","A. Nama Pekerjaan",2)+A("rencana","B. Perencanaan Kegiatan",3)+A("hasil","C. Pelaksanaan Kegiatan/Hasil",5)
+   +'<div>'+(r.foto?'<img class="ph" src="'+r.foto+'" alt="Foto kegiatan">':"")+'<button class="b s noprint" data-img="cat" data-i="'+i+'">'+(r.foto?"Ganti foto kegiatan":"+ Foto kegiatan")+'</button>'+(r.foto?'<button class="b d noprint" data-rmfoto="'+i+'">Hapus foto</button>':"")+'</div>'
+   +A("ins","D. Catatan Instruktur (diisi pembimbing DUDI)",3)+'</div>';
+  }
+ }
+ return h;
+}
+function renderList(n){$("#L_"+n).innerHTML=listHTML(n);}
+
+function fillFields(){
+ var els=document.querySelectorAll("[data-k]");
+ for(var i=0;i<els.length;i++){var v=S.f[els[i].dataset.k];els[i].value=(v==null?"":v);}
+ calcNilai();
+}
+function calcNilai(){
+ var t=0,c=0;
+ for(var i=0;i<4;i++){var v=parseFloat(S.f["sk"+i]);if(!isNaN(v)){t+=v;c++;}}
+ var el=$("#nilai");if(!el)return;
+ if(!c){el.textContent="-";return;}
+ var n=t/c,p=n<70?"D":n<80?"C":n<=90?"B":"A";
+ el.textContent=(Math.round(n*10)/10)+"  ("+p+")";
+}
+
+/* ---------- images ---------- */
+function readImg(file,max,cb){
+ var fr=new FileReader();
+ fr.onerror=function(){toast("Gagal membaca gambar");};
+ fr.onload=function(){
+  var im=new Image();
+  im.onerror=function(){toast("File bukan gambar yang valid");};
+  im.onload=function(){
+   var w=im.width,h=im.height,s=Math.min(1,max/Math.max(w,h));
+   var c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*s));c.height=Math.max(1,Math.round(h*s));
+   var x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);
+   cb(c.toDataURL("image/jpeg",0.75));
+  };
+  im.src=fr.result;
+ };
+ fr.readAsDataURL(file);
+}
+function refreshImgs(){
+ var lb=$("#logoBox"),fb=$("#fotoBox");
+ if(lb)lb.innerHTML=S.logo?'<img src="'+S.logo+'" alt="Logo">':"Ketuk untuk memasang logo sekolah";
+ if(fb)fb.innerHTML=S.foto?'<img src="'+S.foto+'" alt="Foto">':"Ketuk untuk pasang pas foto 3x4";
+}
+
+/* ---------- events ---------- */
+function show(id){
+ var s=document.querySelectorAll(".sec"),b=document.querySelectorAll("#nav button");
+ for(var i=0;i<s.length;i++)s[i].classList.toggle("on",s[i].id===id);
+ var ex=EXTRA.indexOf(id)>-1;
+ for(var j=0;j<b.length;j++)b[j].classList.toggle("on",ex?b[j].dataset.more==="1":b[j].dataset.t===id);
+ for(var q=0;q<TABS.length;q++){if(TABS[q][0]===id)$("#pt").textContent=TABS[q][1];}
+ closeSheet();
+ try{localStorage.setItem(KEY+"_tab",id);}catch(e){}
+ window.scrollTo(0,0);
+}
+function init(){
+ load();
+ var B=[["s0","Sampul"],["s4","Hadir"],["s5","Jurnal"],["s6","Hasil"],["more","Lainnya"]],nv="";
+ for(var i=0;i<B.length;i++){var m=B[i][0]==="more";nv+='<button '+(m?'data-more="1"':'data-t="'+B[i][0]+'"')+'><i><svg viewBox="0 0 24 24">'+IC[B[i][0]]+'</svg></i>'+B[i][1]+'</button>';}
+ $("#nav").innerHTML=nv;
+ var sl="";
+ for(var k=0;k<EXTRA.length;k++){for(var q=0;q<TABS.length;q++){if(TABS[q][0]===EXTRA[k])sl+='<button data-t="'+EXTRA[k]+'">'+TABS[q][1]+'</button>';}}
+ $("#sl").innerHTML=sl;
+ build();renderList("hadir");renderList("jurnal");renderList("cat");
+ var d=document.querySelectorAll("[data-k]");
+ if(!S.f.kompetensi&&!S.f.bidang){S.f.kompetensi="Rekayasa Perangkat Lunak (RPL)";S.f.bidang="Teknologi Informasi";S.f.prog="Teknologi Informasi";S.f.konsen="Rekayasa Perangkat Lunak";S.f.kompdudi=S.f.kompdudi||"";}
+ fillFields();
+ var t="s0";try{t=localStorage.getItem(KEY+"_tab")||"s0";}catch(e){}
+ if(!document.getElementById(t))t="s0";
+ show(t);
+ ready=true;save();
+}
+
+document.addEventListener("input",function(e){
+ var t=e.target;
+ if(t.dataset&&t.dataset.k){
+  S.f[t.dataset.k]=t.value;
+  var o=document.querySelectorAll('[data-k="'+t.dataset.k+'"]');
+  for(var i=0;i<o.length;i++){if(o[i]!==t)o[i].value=t.value;}
+  if(/^sk\d$/.test(t.dataset.k))calcNilai();
+  save();
+ }else if(t.dataset&&t.dataset.l){
+  var n=t.dataset.l,i2=+t.dataset.i,f=t.dataset.f;
+  if(S[n]&&S[n][i2]){S[n][i2][f]=t.value;}
+  if(f==="tgl"){var b=document.getElementById((n==="hadir"?"hr":"hj")+i2);if(b)b.textContent=hari(t.value);}
+  save();
+ }
+});
+document.addEventListener("change",function(e){
+ var t=e.target;
+ if(t.id==="fi"&&t.files&&t.files[0]){
+  var k=imgTarget,file=t.files[0];t.value="";
+  if(!k)return;
+  readImg(file,k.type==="cat"?700:(k.type==="logo"?400:500),function(u){
+   if(k.type==="logo")S.logo=u;else if(k.type==="foto")S.foto=u;else if(S.cat[k.i])S.cat[k.i].foto=u;
+   if(save())toast("Gambar tersimpan");
+   refreshImgs();if(k.type==="cat")renderList("cat");
+  });
+ }else if(t.id==="fj"&&t.files&&t.files[0]){
+  var fr=new FileReader();fr.onload=function(){
+   try{var o=JSON.parse(fr.result);if(!o||typeof o!=="object"||!o.f)throw 0;S=o;localStorage.setItem(KEY,JSON.stringify(S));init();toast("Cadangan dipulihkan");}
+   catch(er){toast("File cadangan tidak valid");}
+  };fr.readAsText(t.files[0]);t.value="";
+ }
+});
+document.addEventListener("click",function(e){
+ var t=e.target;if(!t.closest)return;
+ if(t.id==="sheet"){closeSheet();return;}
+ var el=t.closest("button,[data-img]");if(!el)return;
+ var d=el.dataset;
+ if(d.more){$("#sheet").classList.toggle("on");return;}
+ if(d.t){show(d.t);return;}
+ if(d.img){imgTarget={type:d.img,i:+d.i};$("#fi").click();return;}
+ if(d.add){
+  var n=d.add;S[n].push(n==="hadir"?newHadir():n==="jurnal"?newJurnal():newCat());
+  renderList(n);save();toast("Ditambahkan");return;
+ }
+ if(d.del){
+  var n2=d.del;if(S[n2].length<=1){S[n2]=[n2==="hadir"?newHadir():n2==="jurnal"?newJurnal():newCat()];}
+  else if(confirm("Hapus entri ini?")){S[n2].splice(+d.i,1);}else return;
+  renderList(n2);save();return;
+ }
+ if(d.rmfoto!==undefined){S.cat[+d.rmfoto].foto="";renderList("cat");save();return;}
+ if(el.id==="bPrint"){fitPrint();window.print();return;}
+ if(el.id==="bLogo"){imgTarget={type:"logo",i:0};$("#fi").click();return;}
+ if(el.id==="bImp"){$("#fj").click();return;}
+ if(el.id==="bExp"){
+  try{
+   var bl=new Blob([JSON.stringify(S)],{type:"application/json"});
+   var a=document.createElement("a");a.href=URL.createObjectURL(bl);a.download="cadangan_jurnal_pkl.json";
+   document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);
+   toast("Cadangan diunduh");
+  }catch(er){toast("Gagal mengunduh cadangan");}
+  return;
+ }
+ if(el.id==="bReset"){
+  if(confirm("Hapus SEMUA isian jurnal? Tindakan ini tidak bisa dibatalkan.")){
+   try{localStorage.removeItem(KEY);}catch(er){}
+   S={f:{},hadir:[],jurnal:[],cat:[],logo:"",foto:""};init();toast("Semua isian dihapus");
+  }
+ }
+});
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();}catch(e){}
+window.addEventListener("pagehide",save);
+document.addEventListener("visibilitychange",function(){if(document.hidden)save();});
+var has=false;
+try{has=!!localStorage.getItem(KEY);}catch(e){}
+if(has){init();}
+else{
+ idb("get",null,function(v){
+  if(v){try{S=JSON.parse(v);localStorage.setItem(KEY,v);}catch(e){}}
+  init();
+ });
+}
+})();
+</script>
+</body>
+</html>
